@@ -21,7 +21,7 @@ guardadf <- function(dataframes,folder="", home="Yes"){
     
     for (df in dataframes) {
         if(exists(df)){
-            save(list=df,file = paste0(path,df,".Rda"))
+            saveRDS(get(df),file = paste0(path,df,".Rds"))
             write.table(get(df), paste0(path,df,".csv"),row.names = F, sep = "|")
             cat(paste0("File '",df,"' saved\n"))
         } else{
