@@ -1,12 +1,11 @@
-#' guardadf
-#' Gaarda los dataframes listados  en la carpeta designada
-#' @param lista lista de dataframes en string.
-#'        Allowed values: "objeto1" o c("objeto1", "objeto2")
-#' @param folder string con la ruta donde se desea guardar. 
-#' @param home "description"Yes" implica que 'folder' son subcarpetas de el working directory. Si es igual a no, 'folder' se considerará como la ruta completa.
-#'@author: emendoza
-
 guardadf <- function(dataframes,folder="", home="Yes"){
+    #' guardadf
+    #' Gaarda los dataframes listados  en la carpeta designada
+    #' @param lista lista de dataframes en string.
+    #'        Allowed values: "objeto1" o c("objeto1", "objeto2")
+    #' @param folder string con la ruta donde se desea guardar. 
+    #' @param home "description"Yes" implica que 'folder' son subcarpetas de el working directory. Si es igual a no, 'folder' se considerará como la ruta completa.
+    #'@author: emendoza
     if(home=="No"){
         path <- folder
     } else{
