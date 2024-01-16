@@ -1,33 +1,33 @@
-#' Substituye los diferentes nombres posibles de los estados por un nombre estandarizado corto o cÛdigo
+#' Substituye los diferentes nombres posibles de los estados por un nombre estandarizado corto o c√≥digo
 #'
 #'
 
 nombra_estados <- function(nombre, tipo) {
    #' @param nombre Vector con el nombre de los estados
-   #' @param tipo Si desea el "nombre" simple, el "codigo" del INEGI o el "nombreinegi", tal y como aparece en su catÛlogo
+   #' @param tipo Si desea el "nombre" simple, el "codigo" del INEGI o el "nombreinegi", tal y como aparece en su cat√≥logo
    #'
    #'
    #'
    library(stringr)
    library(purrr)
    library(dplyr)
-
+   
    n1 <- nombre
    
    # Elimina acentos y espacios extras
    nombre <- sapply(nombre, function(x) str_squish(x))
    nombre <- str_replace_all(nombre,
                              c(
-                                "·" = "a",
-                                "È" = "e",
-                                "Ì" = "i",
-                                "Û" = "o",
-                                "˙" = "u"
+                                "√°" = "a",
+                                "√©" = "e",
+                                "√≠" = "i",
+                                "√≥" = "o",
+                                "√∫" = "u"
                              ))
    nombre <- (tolower(nombre))
    n2 <- nombre
 
-   #### Cat·logo ####      
+   #### Cat√°logo ####      
    catalogo <- list(
       "aguascalientes" = list(
          "nombre" = "Aguascalientes",
@@ -66,15 +66,15 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Norte"
       ),
       "distrito federal" = list(
-         "nombre" = "Ciudad de MÈxico",
+         "nombre" = "Ciudad de M√©xico",
          "codigo" = "09",
-         "nombreinegi" =  "Ciudad de MÈxico",
+         "nombreinegi" =  "Ciudad de M√©xico",
          "regional" = "Sur"
       ),
       "ciudad de mexico" = list(
-         "nombre" = "Ciudad de MÈxico",
+         "nombre" = "Ciudad de M√©xico",
          "codigo" = "09",
-         "nombreinegi" =  "Ciudad de MÈxico",
+         "nombreinegi" =  "Ciudad de M√©xico",
          "regional" = "Sur"
       ),
       "coahuila" = list(
@@ -126,27 +126,27 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Occidente"
       ),
       "estado de mexico" = list(
-         "nombre" = "MÈxico",
+         "nombre" = "M√©xico",
          "codigo" = "15",
-         "nombreinegi" =  "MÈxico",
+         "nombreinegi" =  "M√©xico",
          "regional" = "Sur"
       ),
       "mexico" = list(
-         "nombre" = "MÈxico",
+         "nombre" = "M√©xico",
          "codigo" = "15",
-         "nombreinegi" =  "MÈxico",
+         "nombreinegi" =  "M√©xico",
          "regional" = "Sur"
       ),
       "michoacan" = list(
-         "nombre" = "Michoac·n",
+         "nombre" = "Michoac√°n",
          "codigo" = "16",
-         "nombreinegi" =  "Michoac·n de Ocampo",
+         "nombreinegi" =  "Michoac√°n de Ocampo",
          "regional" = "Occidente"
       ),
       "michoacan de ocampo" = list(
-         "nombre" = "Michoac·n",
+         "nombre" = "Michoac√°n",
          "codigo" = "16",
-         "nombreinegi" =  "Michoac·n de Ocampo",
+         "nombreinegi" =  "Michoac√°n de Ocampo",
          "regional" = "Occidente"
       ),
       "morelos" = list(
@@ -162,9 +162,9 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Occidente"
       ),
       "nuevo leon" = list(
-         "nombre" = "Nuevo LeÛn",
+         "nombre" = "Nuevo Le√≥n",
          "codigo" = "19",
-         "nombreinegi" =  "Nuevo LeÛn",
+         "nombreinegi" =  "Nuevo Le√≥n",
          "regional" = "Norte"
       ),
       "oaxaca" = list(
@@ -180,15 +180,15 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Sur"
       ),
       "queretaro arteaga" = list(
-         "nombre" = "QuerÈtaro",
+         "nombre" = "Quer√©taro",
          "codigo" = "22",
-         "nombreinegi" =  "QuerÈtaro",
+         "nombreinegi" =  "Quer√©taro",
          "regional" = "Occidente"
       ),
       "queretaro" = list(
-         "nombre" = "QuerÈtaro",
+         "nombre" = "Quer√©taro",
          "codigo" = "22",
-         "nombreinegi" =  "QuerÈtaro",
+         "nombreinegi" =  "Quer√©taro",
          "regional" = "Occidente"
       ),
       "quintana roo" = list(
@@ -198,9 +198,9 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Occidente"
       ),
       "san luis potosi" = list(
-         "nombre" = "San Luis PotosÌ",
+         "nombre" = "San Luis Potos√≠",
          "codigo" = "24",
-         "nombreinegi" =  "San Luis PotosÌ",
+         "nombreinegi" =  "San Luis Potos√≠",
          "regional" = "Occidente"
       ),
       "sinaloa" = list(
@@ -246,9 +246,9 @@ nombra_estados <- function(nombre, tipo) {
          "regional" = "Sur"
       ),
       "yucatan" = list(
-         "nombre" = "Yucat·n",
+         "nombre" = "Yucat√°n",
          "codigo" = "31",
-         "nombreinegi" =  "Yucat·n",
+         "nombreinegi" =  "Yucat√°n",
          "regional" = "Sureste"
       ),
       "zacatecas" = list(
@@ -260,7 +260,7 @@ nombra_estados <- function(nombre, tipo) {
    )
    
    
-   #### Ejecuta cÛdigo ####
+   #### Ejecuta c√≥digo ####
    A <- data.frame(sapply(catalogo, function(x)
       x[[tipo]]))
    A[,2] <-rownames(A)
@@ -270,7 +270,7 @@ nombra_estados <- function(nombre, tipo) {
 
    no_incluidos <- unique(n1[!(n2 %in% A[,2])])
    if (length(no_incluidos)>0) {
-      print("Los siguientes nombres no est·n en el cat·logo:")
+      print("Los siguientes nombres no est√°n en el cat√°logo:")
       print(no_incluidos)
    }
    
